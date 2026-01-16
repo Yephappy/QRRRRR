@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <header class="header">
+      <h1>Generador de QR</h1>
+      <p>Escribe un link o texto y descarga tu QR en PNG.</p>
+    </header>
+
+    <section class="grid">
+      <div class="controls">
+        <label class="label" for="text">Texto / URL</label>
+        <input id="text" class="input" type="text" placeholder="https://example.com" autocomplete="off" />
+
+        <div class="row">
+          <div>
+            <label class="label" for="size">Tamaño (px)</label>
+            <input id="size" class="input" type="number" min="128" max="1024" step="32" value="256" />
+          </div>
+
+          <div>
+            <label class="label" for="ecc">Corrección</label>
+            <select id="ecc" class="input">
+              <option value="L">L (7%)</option>
+              <option value="M">M (15%)</option>
+              <option value="Q">Q (25%)</option>
+              <option value="H" selected>H (30%)</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="check">
+          <input id="asUrl" type="checkbox" checked />
+          Tratar como URL (agrega <code>https://</code> si falta)
+        </label>
+
+        <div class="buttons">
+          <button id="btnGenerate" class="btn primary">Generar</button>
+          <button id="btnClear" class="btn">Limpiar</button>
+          <button id="btnDownload" class="btn">Descargar PNG</button>
+        </div>
+
+        <p id="hint" class="hint"></p>
+      </div>
+
+      <div class="preview">
+        <div id="qrcode" class="qr"></div>
+        <p class="small">Tip: si el QR no aparece, revisa que haya texto y vuelve a “Generar”.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Hecho para GitHub Pages.</span>
+    </footer>
+  </main>
+
+  <!-- QRCodeJS (qrcodejs) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
